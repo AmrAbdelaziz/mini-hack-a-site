@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyber-black text-matrix;
+    text-shadow: 0 0 5px #00ff00;
+  }
+}
+
+@layer components {
+  .terminal {
+    @apply bg-terminal text-matrix p-4 rounded-lg font-mono;
+    box-shadow: 0 0 10px #00ff00;
+  }
+
+  .glitch-text {
+    @apply relative;
+    animation: glitch 1s linear infinite;
+  }
+
+  .typing-text {
+    @apply overflow-hidden whitespace-nowrap border-r-2 border-matrix;
+    animation: typing 3.5s steps(40, end), blink .75s step-end infinite;
+  }
+
+  .mission-card {
+    @apply bg-terminal p-4 rounded-lg border border-matrix hover:border-cyber-blue transition-all duration-300;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+  }
+
+  .mission-card:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .hacker-button {
+    @apply bg-terminal text-matrix px-4 py-2 rounded border border-matrix hover:border-cyber-blue transition-all duration-300;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+  }
+
+  .hacker-button:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .console-output {
+    @apply font-mono text-sm;
+  }
+
+  .console-input {
+    @apply bg-transparent border-none outline-none text-matrix font-mono;
+  }
+
+  .console-input::before {
+    content: "> ";
+    @apply text-cyber-blue;
+  }
+}
+
+/* Matrix rain effect */
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+/* Glitch effect */
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                 0.025em 0.04em 0 #fffc00;
+  }
+  15% {
+    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                 0.025em 0.04em 0 #fffc00;
+  }
+  16% {
+    text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                 -0.05em -0.05em 0 #fffc00;
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                 -0.05em -0.05em 0 #fffc00;
+  }
+  50% {
+    text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                 0 -0.04em 0 #fffc00;
+  }
+  99% {
+    text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                 0 -0.04em 0 #fffc00;
+  }
+  100% {
+    text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
+                 -0.04em -0.025em 0 #fffc00;
+  }
+} 

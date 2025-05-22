@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaLock, FaLockOpen } from 'react-icons/fa'
@@ -56,7 +57,7 @@ const initialMissions: Mission[] = [
 
 export default function MissionHub() {
   const navigate = useNavigate()
-  const [missions, setMissions] = useState(initialMissions)
+  const [missions, setMissions] = useState<Mission[]>(initialMissions)
 
   useEffect(() => {
     // Check for completed missions in localStorage
@@ -68,8 +69,8 @@ export default function MissionHub() {
     }
 
     // Update mission locked status
-    setMissions(prevMissions => 
-      prevMissions.map((mission, index) => {
+    setMissions((prevMissions: Mission[]) => 
+      prevMissions.map((mission: Mission, index: number) => {
         // First mission is always unlocked
         if (index === 0) return mission
         
@@ -97,7 +98,7 @@ export default function MissionHub() {
       </motion.h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {missions.map((mission, index) => (
+        {missions.map((mission: Mission, index: number) => (
           <motion.div
             key={mission.id}
             className="mission-card"

@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import MissionHub from './components/MissionHub'
 import LoginPage from './missions/LoginPage'

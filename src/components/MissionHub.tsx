@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaLock, FaLockOpen } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
@@ -7,6 +7,7 @@ interface Mission {
   id: string
   title: string
   description: string
+  path: string
   difficulty: 'Easy' | 'Medium' | 'Hard'
   locked: boolean
   hint: string
@@ -19,6 +20,7 @@ const initialMissions: Mission[] = [
     id: 'login-page',
     title: 'Login Page',
     description: 'Find the hidden password in the source code.',
+    path: '/mission/login-page',
     difficulty: 'Easy',
     locked: false,
     hint: 'Sometimes answers are hidden in plain sight.'
@@ -27,6 +29,7 @@ const initialMissions: Mission[] = [
     id: 'bank-transfer',
     title: 'Bank Transfer Portal',
     description: 'Bypass the security check to access the transfer page.',
+    path: '/mission/bank-transfer',
     difficulty: 'Medium',
     locked: true,
     hint: 'Check the network requests.'
@@ -35,6 +38,7 @@ const initialMissions: Mission[] = [
     id: 'classified-files',
     title: 'Classified File Server',
     description: 'Access the hidden files by manipulating the URL.',
+    path: '/mission/classified-files',
     difficulty: 'Hard',
     locked: true,
     hint: 'The path is not what it seems.'
@@ -43,6 +47,7 @@ const initialMissions: Mission[] = [
     id: 'ecommerce',
     title: 'E-commerce Checkout',
     description: 'Find a way to get free items in the cart.',
+    path: '/mission/ecommerce',
     difficulty: 'Medium',
     locked: true,
     hint: 'Look for client-side validation.'
@@ -122,7 +127,7 @@ export default function MissionHub() {
                 disabled={mission.locked}
                 onClick={() => {
                   if (!mission.locked) {
-                    navigate(`/mission/${mission.id}`)
+                    navigate(mission.path)
                   }
                 }}
               >

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaLock, FaLockOpen } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
